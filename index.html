@@ -6,68 +6,112 @@
     <title>To My Diva</title>
     <style>
         :root { --gold: #d4af37; --bg: #0a0a0a; }
-        body, html { height: 100%; margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--bg); color: white; overflow: hidden; }
-        #welcome { position: fixed; inset: 0; background: radial-gradient(circle, #1a1a1a, #000); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 100; transition: 1s; }
-        #welcome h2 { color: var(--gold); font-size: 40px; font-style: italic; text-shadow: 0 0 15px rgba(212,175,55,0.5); }
-        #startBtn { padding: 15px 50px; background: none; color: var(--gold); border: 2px solid var(--gold); cursor: pointer; font-weight: bold; transition: 0.3s; }
+        body, html { height: 100%; margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--bg); color: white; overflow-x: hidden; }
+        
+        /* شاشة الدخول */
+        #welcome { position: fixed; inset: 0; background: radial-gradient(circle, #1a1a1a, #000); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 100; transition: 1.2s; }
+        #welcome h2 { color: var(--gold); font-size: 40px; font-style: italic; text-shadow: 0 0 15px rgba(212,175,55,0.5); margin-bottom: 30px; }
+        #startBtn { padding: 15px 50px; background: none; color: var(--gold); border: 2px solid var(--gold); cursor: pointer; font-weight: bold; font-size: 18px; transition: 0.3s; }
         #startBtn:hover { background: var(--gold); color: black; box-shadow: 0 0 30px var(--gold); }
-        .main-card { display: none; opacity: 0; width: 85%; max-width: 400px; margin: 50px auto; background: rgba(20,20,20,0.9); border: 1px solid var(--gold); padding: 30px; border-radius: 20px; text-align: center; transition: 1s; }
-        .slider-box { background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; margin: 20px 0; }
-        input[type=range] { width: 100%; accent-color: var(--gold); }
-        #finalBtn { display: none; background: var(--gold); color: black; border: none; padding: 12px 30px; border-radius: 5px; font-weight: bold; cursor: pointer; }
-        #msg { display: none; margin-top: 20px; padding: 15px; border: 1px solid var(--gold); border-radius: 10px; animation: fade 1s; }
+
+        /* المحتوى الرئيسي */
+        .container { display: none; opacity: 0; width: 90%; max-width: 450px; margin: 20px auto; background: rgba(20,20,20,0.95); border: 1px solid var(--gold); padding: 25px; border-radius: 20px; text-align: center; transition: 1s; box-shadow: 0 0 40px rgba(212, 175, 55, 0.1); }
+        
+        /* شبكة الجمل الشهيرة */
+        .quotes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; background: rgba(255, 255, 255, 0.03); padding: 15px; border-radius: 12px; margin: 20px 0; border-right: 3px solid var(--gold); }
+        .quotes-grid p { margin: 0; font-size: 13px; color: #ccc; text-align: right; }
+
+        /* منطقة الشريط */
+        .slider-box { background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; margin: 20px 0; border: 1px solid rgba(212, 175, 55, 0.2); }
+        input[type=range] { width: 100%; accent-color: var(--gold); cursor: pointer; }
+        #status { margin-top: 15px; font-weight: bold; color: var(--gold); min-height: 40px; }
+
+        #finalBtn { display: none; background: var(--gold); color: black; border: none; padding: 12px 30px; border-radius: 5px; font-weight: bold; cursor: pointer; margin-top: 15px; }
+        #msg { display: none; margin-top: 20px; padding: 20px; border: 1px solid var(--gold); border-radius: 15px; background: rgba(212, 175, 55, 0.1); animation: fade 1.5s; }
+        
         .heart { position: absolute; color: var(--gold); pointer-events: none; animation: fly linear forwards; }
-        @keyframes fly { 0% { transform: translateY(105vh); opacity: 0; } 100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; } }
+        @keyframes fly { 0% { transform: translateY(105vh); opacity: 0; } 50% { opacity: 0.8; } 100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; } }
         @keyframes fade { from {opacity:0} to {opacity:1} }
     </style>
 </head>
 <body>
 
-<audio id="music" loop><source src="https://files.catbox.moe/p9p39v.mp3" type="audio/mpeg"></audio>
+<audio id="music" loop>
+    <source src="https://files.catbox.moe/p9p39v.mp3" type="audio/mpeg">
+</audio>
 
 <div id="welcome">
     <h2>To My Diva</h2>
     <button id="startBtn" onclick="start()">Enter Her World</button>
 </div>
 
-<div class="main-card" id="card">
-    <h1 style="color: var(--gold);">I Wanna Be Yours 😍</h1>
+<div class="container" id="mainCard">
+    <h1 style="color: var(--gold); font-size: 22px;">أشهر جمل الـ Diva 😤</h1>
+    
+    <div class="quotes-grid">
+        <p>• ريح .. يعم اقعد 🙄</p>
+        <p>• شربت شاي و قهوه 🌚</p>
+        <p>• والله هعجنك 🥊</p>
+        <p>• هروح اكل روڤان 👶</p>
+        <p>• فاكس .. اتلم ✋</p>
+        <p>• عايزه انتحر 😭</p>
+        <p>• واد ي هيثومه 😏</p>
+        <p>• ميرسي .. عييب ✨</p>
+    </div>
+
     <div class="slider-box">
-        <p id="status" style="color: var(--gold);">حركي الشريط لو لسه الزعل موجود.. 😤</p>
+        <p id="status">حركي الشريط لو لسه الزعل موجود.. 😤</p>
         <input type="range" min="0" max="100" value="0" oninput="check(this.value)">
     </div>
+
     <button id="finalBtn" onclick="show()">مسمحاك يا هيثومة ❤️</button>
+    
     <div id="msg">
-        <p style="color: var(--gold); font-size: 18px; font-weight: bold;">حقك عليا يا أحلى "اسرورتي" في الدنيا! ✨❤️</p>
-        <p style="color: #ccc; font-size: 14px;">والله أنا اسف ي روحقلبي دي انتي بنوتي ي اسروره ومقدرش علي زعلك 🌚💕</p>
+        <p style="color: var(--gold); font-size: 19px; font-weight: bold; margin-bottom: 10px;">حقك عليا يا أحلى "اسرورتي" في الدنيا! ✨❤️</p>
+        <p style="color: #ccc; font-size: 15px;">والله أنا اسف ي روحقلبي دي انتي بنوتي ي اسروره ومقدرش علي زعلك 🌚💕</p>
     </div>
 </div>
 
 <script>
     const m = document.getElementById('music');
     function start() {
-        m.play().catch(() => console.log("Music ready"));
+        m.play().catch(e => console.log("Audio ready"));
         document.getElementById('welcome').style.transform = 'translateY(-100%)';
         setTimeout(() => { 
-            const c = document.getElementById('card'); c.style.display = 'block';
+            const c = document.getElementById('mainCard'); 
+            c.style.display = 'block';
             setTimeout(() => { c.style.opacity = '1'; }, 100);
         }, 1000);
-        setInterval(createHeart, 500);
+        setInterval(createHeart, 400);
     }
+
     function createHeart() {
         const h = document.createElement('div'); h.innerHTML = '✨'; h.className = 'heart';
-        h.style.left = Math.random() * 100 + 'vw'; h.style.fontSize = (Math.random()*20+15)+'px';
+        h.style.left = Math.random() * 100 + 'vw'; 
+        h.style.fontSize = (Math.random()*20+15)+'px';
         h.style.animationDuration = (Math.random()*3+4)+'s';
-        document.body.appendChild(h); setTimeout(() => h.remove(), 6000);
+        document.body.appendChild(h); 
+        setTimeout(() => h.remove(), 6000);
     }
+
     function check(v) {
-        const s = document.getElementById('status'); const b = document.getElementById('finalBtn');
-        if(v > 95) { s.innerText = "بعشقك يا ديڤا قلبي ❤️🥰"; b.style.display = 'inline-block'; }
-        else { s.innerText = "لسه زعلانة؟ كملي الشريط طيب 😭"; b.style.display = 'none'; }
+        const s = document.getElementById('status'); 
+        const b = document.getElementById('finalBtn');
+        
+        if (v == 0) s.innerText = "حركي الشريط لو لسه الزعل موجود.. 😤";
+        else if (v < 30) s.innerText = "لسه؟ طب فكري تاني طيب.. 🥺";
+        else if (v < 60) s.innerText = "هانت.. والله هيثومة بيحبك! 🌚";
+        else if (v < 90) s.innerText = "خلاص؟ المسامح كريم يا ديڤا.. 👑";
+        else { 
+            s.innerText = "بعشقك يا ديڤا قلبي ❤️🥰"; 
+            b.style.display = 'inline-block'; 
+        }
     }
+
     function show() { 
         document.getElementById('msg').style.display = 'block'; 
         document.getElementById('finalBtn').style.display = 'none';
+        setInterval(createHeart, 100);
     }
 </script>
 </body>
