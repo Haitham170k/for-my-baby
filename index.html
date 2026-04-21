@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To My Diva</title>
+    <style>
+        :root { --gold: #d4af37; --bg: #0a0a0a; }
+        body, html { height: 100%; margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--bg); color: white; overflow: hidden; }
+        #welcome { position: fixed; inset: 0; background: radial-gradient(circle, #1a1a1a, #000); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 100; transition: 1s; }
+        #welcome h2 { color: var(--gold); font-size: 40px; font-style: italic; text-shadow: 0 0 15px rgba(212,175,55,0.5); }
+        #startBtn { padding: 15px 50px; background: none; color: var(--gold); border: 2px solid var(--gold); cursor: pointer; font-weight: bold; transition: 0.3s; }
+        #startBtn:hover { background: var(--gold); color: black; box-shadow: 0 0 30px var(--gold); }
+        .main-card { display: none; opacity: 0; width: 85%; max-width: 400px; margin: 50px auto; background: rgba(20,20,20,0.9); border: 1px solid var(--gold); padding: 30px; border-radius: 20px; text-align: center; transition: 1s; }
+        .slider-box { background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; margin: 20px 0; }
+        input[type=range] { width: 100%; accent-color: var(--gold); }
+        #finalBtn { display: none; background: var(--gold); color: black; border: none; padding: 12px 30px; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        #msg { display: none; margin-top: 20px; padding: 15px; border: 1px solid var(--gold); border-radius: 10px; animation: fade 1s; }
+        .heart { position: absolute; color: var(--gold); pointer-events: none; animation: fly linear forwards; }
+        @keyframes fly { 0% { transform: translateY(105vh); opacity: 0; } 100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; } }
+        @keyframes fade { from {opacity:0} to {opacity:1} }
+    </style>
+</head>
+<body>
+
+<audio id="music" loop><source src="https://files.catbox.moe/p9p39v.mp3" type="audio/mpeg"></audio>
+
+<div id="welcome">
+    <h2>To My Diva</h2>
+    <button id="startBtn" onclick="start()">Enter Her World</button>
+</div>
+
+<div class="main-card" id="card">
+    <h1 style="color: var(--gold);">I Wanna Be Yours 😍</h1>
+    <div class="slider-box">
+        <p id="status" style="color: var(--gold);">حركي الشريط لو لسه الزعل موجود.. 😤</p>
+        <input type="range" min="0" max="100" value="0" oninput="check(this.value)">
+    </div>
+    <button id="finalBtn" onclick="show()">مسمحاك يا هيثومة ❤️</button>
+    <div id="msg">
+        <p style="color: var(--gold); font-size: 18px; font-weight: bold;">حقك عليا يا أحلى "اسرورتي" في الدنيا! ✨❤️</p>
+        <p style="color: #ccc; font-size: 14px;">والله أنا اسف ي روحقلبي دي انتي بنوتي ي اسروره ومقدرش علي زعلك 🌚💕</p>
+    </div>
+</div>
+
+<script>
+    const m = document.getElementById('music');
+    function start() {
+        m.play().catch(() => console.log("Music ready"));
+        document.getElementById('welcome').style.transform = 'translateY(-100%)';
+        setTimeout(() => { 
+            const c = document.getElementById('card'); c.style.display = 'block';
+            setTimeout(() => { c.style.opacity = '1'; }, 100);
+        }, 1000);
+        setInterval(createHeart, 500);
+    }
+    function createHeart() {
+        const h = document.createElement('div'); h.innerHTML = '✨'; h.className = 'heart';
+        h.style.left = Math.random() * 100 + 'vw'; h.style.fontSize = (Math.random()*20+15)+'px';
+        h.style.animationDuration = (Math.random()*3+4)+'s';
+        document.body.appendChild(h); setTimeout(() => h.remove(), 6000);
+    }
+    function check(v) {
+        const s = document.getElementById('status'); const b = document.getElementById('finalBtn');
+        if(v > 95) { s.innerText = "بعشقك يا ديڤا قلبي ❤️🥰"; b.style.display = 'inline-block'; }
+        else { s.innerText = "لسه زعلانة؟ كملي الشريط طيب 😭"; b.style.display = 'none'; }
+    }
+    function show() { 
+        document.getElementById('msg').style.display = 'block'; 
+        document.getElementById('finalBtn').style.display = 'none';
+    }
+</script>
+</body>
+</html>
